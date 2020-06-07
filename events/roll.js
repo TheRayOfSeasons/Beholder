@@ -5,16 +5,72 @@ export class Roll extends Event
 {
   start()
   {
+    const validFormat = /^((\d+d\d+|\d+)\s+(\+|\-|\*|\/)\s+)+(\d+d\d+|\d+)$/i;
+
+    /* Regex for getting the operators. */
+    const operatorRegex = /@/g;
+
     const message = this.message;
-    const text = message.content;
-    const [dices, sides] = text.toLowerCase().substring(2).split('d');
-    const { rolls, rollValue } = this.roll(dices, sides);
-    const msg = `[${rolls}]\nRoll: ${rollValue}`;
-    message.channel.send(msg);
+
+    const text = message.content.toLowerCase();
+
+    /* Validate Input. */
+    if(!validFormat.test(text))
+      return message.channel.send('Invalid format.');
+
+    /* Split the message content by any of the operators. */
+    const values = text.substring(2).split(operatorRegex);
+
+    /* Get an array of the operators (to be used later to construct the operation). */
+    const operators = text
+      .split('')
+      .filter(character => operatorRegex.test(character));
+
+    // if(operators.length >= values.length)
+    //   return message.channel.send('Invalid format.');
+
+    /* Array of each roll and resolved value of each roll. */
+    let rolls = [];
+    for(const value of values)
+    {
+      /* Split the "roll string" by the 'd' (like in '1d20'). */
+      const [dices, sides] = value.split('d');
+
+      /* Perform a roll and get the rolls and the roll value. */
+      const rollData = this.roll(dices, sides)
+      rolls.push(rollData);
+    }
+
+    /* Create copy of `operators` to build the operation string. */
+    let _operators = [ ...operators ];
+
+    /* Build the operation string. */
+    const operation = rolls.reduce((operation, roll) =>
+      operation + roll.rollValue + (_operators.shift() || ''), '');
+
+    /* Create new copy of the operators array (for building the breakdown). */
+    _operators = [ ...operators ];
+
+    /* Build the breakdown of all the rolls. */
+    const breakdown = rolls.reduce((resultString, {rolls, rollValue}, index) =>
+    {
+      const rawRoll = values[index];
+      const rollBreakdown = rolls ? `\`[${rolls.join(', ')}]\`` : '';
+      resultString += `${rawRoll}${rollBreakdown}${(_operators.shift() || '')}`;
+      return resultString;
+    }, '');
+
+    /* Evaluate all the rolls (from the built operation string). */
+    const total = eval(operation);
+
+    message.channel.send(`Breakdown: ${breakdown}\nTotal: ${total}`);
   }
 
   roll(dices, sides)
   {
+    if(!sides)
+      return { rollValue: dices };
+
     const rolls = [];
     for(let i = 0; i < dices; i++)
     {
@@ -23,6 +79,11 @@ export class Roll extends Event
     }
 
     const rollValue = rolls.reduce((sum, roll) => sum + roll, 0);
-    return { rolls, rollValue };
+    return (
+      {
+        rolls,
+        rollValue,
+      }
+    );
   }
 }
