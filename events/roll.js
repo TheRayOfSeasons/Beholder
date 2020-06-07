@@ -5,7 +5,7 @@ export class Roll extends Event
 {
   start()
   {
-    const validFormat = /^((\d+d\d+|\d+)\s+(\+|\-|\*|\/)\s+)+(\d+d\d+|\d+)$/i;
+    const validFormat = /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)+(\d+d\d+|\d+)$/i;
 
     /* Regex for getting the operators. */
     const operatorRegex = /\+|\-|\*|\//g;
@@ -48,19 +48,26 @@ export class Roll extends Event
       operation + roll.rollValue + (_operators.shift() || ''), '');
 
     /* Create new copy of the operators array (for building the breakdown). */
-    _operators = [ ...operators ];
+    _operators = [ ...operators ]
+      .map(operator =>
+        operator === '*' ?
+          '×' :
+        operator === '/' ?
+          '÷' : operator.trim()
+      );
 
     /* Build the breakdown of all the rolls. */
     const breakdown = rolls.reduce((resultString, {rolls, rollValue}, index) =>
     {
       const rawRoll = values[index];
       const rollBreakdown = rolls ? `\`[${rolls.join(', ')}]\`` : '';
-      resultString += `${rawRoll}${rollBreakdown} ${(_operators.shift() || '')}`;
+      resultString += `${rawRoll.trim()} ${rollBreakdown.trim()} ${(_operators.shift() || '')}`;
       return resultString;
     }, '');
 
     /* Evaluate all the rolls (from the built operation string). */
-    const total = eval(operation);
+    let total = eval(operation);
+    total = Math.round(total);
 
     message.channel.send(`Breakdown: ${breakdown}\nTotal: ${total}`);
   }
