@@ -8,26 +8,25 @@ export class Roll extends Event
     const validFormat = /^((\d+d\d+|\d+)\s+(\+|\-|\*|\/)\s+)+(\d+d\d+|\d+)$/i;
 
     /* Regex for getting the operators. */
-    const operatorRegex = /@/g;
+    const operatorRegex = /\+|\-|\*|\//g;
 
     const message = this.message;
-
-    const text = message.content.toLowerCase();
+    const text = message.content
+      .toLowerCase()
+      .substring(2)
+      .trim();
 
     /* Validate Input. */
     if(!validFormat.test(text))
       return message.channel.send('Invalid format.');
 
     /* Split the message content by any of the operators. */
-    const values = text.substring(2).split(operatorRegex);
+    const values = text.split(operatorRegex);
 
     /* Get an array of the operators (to be used later to construct the operation). */
     const operators = text
       .split('')
       .filter(character => operatorRegex.test(character));
-
-    // if(operators.length >= values.length)
-    //   return message.channel.send('Invalid format.');
 
     /* Array of each roll and resolved value of each roll. */
     let rolls = [];
@@ -56,7 +55,7 @@ export class Roll extends Event
     {
       const rawRoll = values[index];
       const rollBreakdown = rolls ? `\`[${rolls.join(', ')}]\`` : '';
-      resultString += `${rawRoll}${rollBreakdown}${(_operators.shift() || '')}`;
+      resultString += `${rawRoll}${rollBreakdown} ${(_operators.shift() || '')}`;
       return resultString;
     }, '');
 
