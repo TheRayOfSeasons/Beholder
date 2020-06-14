@@ -5,10 +5,12 @@ export class Roll extends Event
 {
   start()
   {
-    const validFormat = /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)+(\d+d\d+|\d+)$/i;
+    const validFormat = (
+      /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)*(\d+d\d+|\d+)+(\s+(adv|dis))*\s*$/i);
 
     /* Regex for getting the operators. */
     const operatorRegex = /\+|\-|\*|\//g;
+    const operationModifierRegex = /\s+adv|\s+dis/g;
 
     const message = this.message;
     const text = message.content
@@ -21,12 +23,17 @@ export class Roll extends Event
       return message.channel.send('Invalid format.');
 
     /* Split the message content by any of the operators. */
-    const values = text.split(operatorRegex);
+    const values = text.replace(operationModifierRegex, '').split(operatorRegex);
 
-    /* Get an array of the operators (to be used later to construct the operation). */
+    /* Get an array of the operators
+     * (to be used later to construct the operation). */
     const operators = text
       .split('')
       .filter(character => operatorRegex.test(character));
+
+    const operatorModifiers = operationModifierRegex.exec(text);
+    const [modifier, ...modiferExtras] = (
+      operatorModifiers ? Object.entries(operatorModifiers) : Array(2));
 
     /* Array of each roll and resolved value of each roll. */
     let rolls = [];
@@ -36,7 +43,7 @@ export class Roll extends Event
       const [dices, sides] = value.split('d');
 
       /* Perform a roll and get the rolls and the roll value. */
-      const rollData = this.roll(dices, sides)
+      const rollData = this.handleRoll(dices, sides, modifier);
       rolls.push(rollData);
     }
 
@@ -46,7 +53,8 @@ export class Roll extends Event
     /* Build the operation string. */
     const operation = rolls.reduce((operation, roll) =>
       operation + roll.rollValue + (_operators.shift() || ''), '');
-
+    // FIXME: operation is undefined
+    console.log(operation);
     /* Create new copy of the operators array (for building the breakdown). */
     _operators = [ ...operators ]
       .map(operator =>
@@ -57,11 +65,24 @@ export class Roll extends Event
       );
 
     /* Build the breakdown of all the rolls. */
-    const breakdown = rolls.reduce((resultString, {rolls, rollValue}, index) =>
+    const breakdown = rolls.reduce((resultString, {resolved, dropped}, index) =>
     {
       const rawRoll = values[index];
-      const rollBreakdown = rolls ? `\`[${rolls.join(', ')}]\`` : '';
-      resultString += `${rawRoll.trim()} ${rollBreakdown.trim()} ${(_operators.shift() || '')}`;
+      const {rolls: resolvedRolls, rollValue: resolvedValue} = resolved;
+      const {rolls: droppedRolls, rollValue: droppedValue} = dropped;
+      const resolvedRollBreakdown = (
+        resolvedRolls ? `\`Resolved: [${resolvedRolls.join(', ')}]\`` : ''
+      );
+      const droppedRollBreakdown = (
+        droppedRolls ? `\`Dropped: [${droppedRolls.join(', ')}]\`` : ''
+      );
+      const operatorString = _operators.shift();
+      resultString += [
+        `${rawRoll.trim()}\n`,
+        `${resolvedRollBreakdown.trim()}\n`,
+        `${droppedRollBreakdown.trim()}\n`,
+        `${(operatorString || '')}`
+      ].join('');
       return resultString;
     }, '');
 
@@ -72,11 +93,76 @@ export class Roll extends Event
     message.channel.send(`Breakdown: ${breakdown}\nTotal: ${total}`);
   }
 
-  roll(dices, sides)
+  getSpecialRolls()
+  {
+    const vantage = (favorHighest=true) =>
+    {
+      const resolveRollPair = (first, second, reversed=false) =>
+      {
+        return reversed ?
+          favorHighest ? [second, first] : [first, second]
+          : favorHighest ? [first, second] : [second, first]
+      }
+      return (dices, sides) =>
+      {
+        const [firstRoll, secondRoll] = (
+          Array(2).fill().map(() => roll(dices, sides))
+        );
+        const [resolved, dropped] = resolveRollPair(firstRoll, secondRoll);
+        return (
+          {
+            resolved,
+            dropped
+          }
+        );
+      }
+    }
+
+    return [
+      {
+        keyword: 'adv',
+        action: vantage(true)
+      },
+      {
+        keyword: 'dis',
+        action: vantage(false)
+      }
+    ]
+  }
+
+  handleRoll(dices, sides, modifier=undefined)
   {
     if(!sides)
       return { rollValue: dices };
 
+    if(!modifier)
+      return this.classicRoll(dices, sides);
+
+    /* Remove empty spaces from string to conform with keyword. */
+    modifier = modifier.replace(/\s+/g, '');
+
+    for(const {keyword, action} of this.getSpecialRolls())
+    {
+      if(modifier === keyword)
+        return action(dices, sides);
+    }
+
+    return this.classicRoll(dices, sides);
+  }
+
+  classicRoll(dices, sides)
+  {
+    return {
+      resolved: this.roll(dices, sides),
+      dropped: {
+        rolls: undefined,
+        rollValue: undefined
+      }
+    };
+  }
+
+  roll(dices, sides)
+  {
     const rolls = [];
     for(let i = 0; i < dices; i++)
     {
