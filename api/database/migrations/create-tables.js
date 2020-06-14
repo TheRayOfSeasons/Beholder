@@ -13,75 +13,71 @@ import { db } from '..';
     /* Create fields */
     table.increments('id');
     table.string('player_id', 25).notNullable();
-    table.string('name', 100);
+    table.string('name', 255);
     table.float('exp').defaultTo(0);
     table.string('class', 255);
 
     for(const field of
-    [
-      'level',
-      'hp',
-      'max_hp',
-      'temp_hp',
-      'str',
-      'dex',
-      'con',
-      'int',
-      'wis',
-      'cha',
-      'inspiration',
-      'prof_bonus',
-    ])
+        [
+          'level',
+          'hp',
+          'max_hp',
+          'temp_hp',
+          'str',
+          'dex',
+          'con',
+          'int',
+          'wis',
+          'cha',
+          'inspiration',
+          'prof_bonus',
+        ])
       table.integer(field).defaultTo(0);
 
     table.string('throws_profs', 25);
     table.text('other_prof');
 
     for(const field of
-    [
-      'armor_class',
-      'speed'
-    ])
+        [
+          'armor_class',
+          'speed'
+        ])
       table.integer(field).defaultTo(0);
 
-    table.string('hit_dice', 10);
+    table.string('hit_dice', 20);
     table.integer('hit_dice_total');
 
     for(const field of
-    [
-      'death_save_success',
-      'death_save_fail'
-    ])
+        [
+          'death_save_success',
+          'death_save_fail'
+        ])
       table.integer(field, 1).defaultTo(0);
 
     table.text('special_points');
 
     for(const field of
-    [
-      'copper',
-      'silver',
-      'electrum',
-      'gold',
-      'platinum',
-    ])
+        [
+          'copper',
+          'silver',
+          'electrum',
+          'gold',
+          'platinum',
+        ])
       table.integer(field).defaultTo(0);
 
-    table.string('spellcasting_class');
-    table.string('spellcasting_ability');
+    table.string('spellcasting_class', 255);
+    table.string('spellcasting_ability', 15);
 
-    for(const field of
-    [
-      'spell_dc',
-      'spell_atk_bonus',
-    ])
-      table.integer(field).defaultTo(0);
+    table.integer('spell_dc').defaultTo(0);
+    table.integer('spell_atk_bonus').defaultTo(0);
 
     for(const [ field, length ] of
-    [
-      [ 'background', 255 ],
-      [ 'race', 255 ],
-      [ 'alignment', 20 ],
-    ])
+        [
+          [ 'background', 128 ],
+          [ 'race', 128 ],
+          [ 'alignment', 20 ],
+        ])
       table.string(field, length);
 
     table.string('languages', 500);
@@ -107,26 +103,26 @@ import { db } from '..';
     table.integer('char_id').notNullable();
 
     for(const field of
-    [
-      'traits',
-      'ideals',
-      'bonds',
-      'flaws',
-    ])
+        [
+          'traits',
+          'ideals',
+          'bonds',
+          'flaws',
+        ])
       table.text(field);
 
     for(const [ field, length ] of
-    [
-      [ 'age', 100 ],
-      [ 'height', 100 ],
-      [ 'weight', 100 ],
-      [ 'eyes', 100 ],
-      [ 'skin', 100 ],
-      [ 'hair', 100 ],
-      [ 'appearance', 255 ],
-      [ 'org_name', 255 ],
-      [ 'org_symbol', 255 ],
-    ])
+        [
+          [ 'age', 100 ],
+          [ 'height', 100 ],
+          [ 'weight', 100 ],
+          [ 'eyes', 100 ],
+          [ 'skin', 100 ],
+          [ 'hair', 100 ],
+          [ 'appearance', 255 ],
+          [ 'org_name', 255 ],
+          [ 'org_symbol', 255 ],
+        ])
       table.string(field, length);
 
     for(const field of
@@ -158,26 +154,26 @@ import { db } from '..';
     table.string('proficiencies', 255);
 
     for(const field of
-    [
-      'acrobatics',
-      'animal_handling',
-      'arcana',
-      'athletics',
-      'deception',
-      'history',
-      'insight',
-      'intimidation',
-      'investigation',
-      'medicine',
-      'nature',
-      'perception',
-      'performance',
-      'persuasion',
-      'religion',
-      'sleight_of_hand',
-      'stealth',
-      'survival',
-    ])
+        [
+          'acrobatics',
+          'animal_handling',
+          'arcana',
+          'athletics',
+          'deception',
+          'history',
+          'insight',
+          'intimidation',
+          'investigation',
+          'medicine',
+          'nature',
+          'perception',
+          'performance',
+          'persuasion',
+          'religion',
+          'sleight_of_hand',
+          'stealth',
+          'survival',
+        ])
       table.integer(field).defaultTo(0);
 
     /* Add indices */
@@ -270,7 +266,7 @@ import { db } from '..';
     /* Create fields */
     table.increments('id');
     table.integer('char_id').notNullable();
-    table.integer('level').defaultTo(0);
+    table.integer('level').defaultTo(1);
     table.string('name', 255);
     table.text('description');
     table.boolean('is_cantrip').defaultTo(false);
@@ -280,6 +276,7 @@ import { db } from '..';
     table.index('char_id', `${tableName}_char_id`);
     table.index('name', `${tableName}_name`);
     table.index('spell_id', 'spell_id');
+    table.index('level', `${tableName}_level`);
   })
     .catch(error => createError(error, tableName));
 
