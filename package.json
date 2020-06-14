@@ -4,8 +4,9 @@
   "description": "A discord utiity bot for dungeons and dragons.",
   "main": "index.js",
   "scripts": {
-    "start": "node -r esm -r dotenv/config .",
-    "dev": "nodemon"
+    "start": "node -r esm .",
+    "dev": "nodemon",
+    "initdb": "node -r esm api/database/migrations/create-tables.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,9 @@
   },
   "homepage": "https://github.com/TheRayOfSeasons/Beholder#readme",
   "dependencies": {
-    "discord.js": "^12.2.0"
+    "discord.js": "^12.2.0",
+    "knex": "^0.21.1",
+    "sqlite3": "^4.2.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
