@@ -1,4 +1,5 @@
 dependencies:
+  discord-utils: github.com/esfox/discord-utils/81e3257cda484e632f2f815819ed247f59132021
   discord.js: 12.2.0
   knex: 0.21.1_sqlite3@4.2.0
   sqlite3: 4.2.0
@@ -146,6 +147,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-WWZ/QfrdTyDMvCu5a41Pf3jsA2c=
+  /async-limiter/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
   /asynckit/0.4.0:
     dev: false
     resolution:
@@ -490,6 +495,45 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
+  /discord.js/11.6.4:
+    dependencies:
+      long: 4.0.0
+      prism-media: 0.0.4
+      snekfetch: 3.6.4
+      tweetnacl: 1.0.3
+      ws: 6.2.1
+    dev: false
+    engines:
+      node: '>=6.0.0'
+    peerDependencies:
+      '@discordjs/opus': ^0.1.0
+      '@discordjs/uws': ^10.149.0
+      bufferutil: ^4.0.0
+      erlpack: discordapp/erlpack
+      libsodium-wrappers: ^0.7.3
+      node-opus: ^0.2.7
+      opusscript: ^0.0.6
+      sodium: ^2.0.3
+      uws: '*'
+    peerDependenciesMeta:
+      '@discordjs/opus':
+        optional: true
+      bufferutil:
+        optional: true
+      erlpack:
+        optional: true
+      libsodium-wrappers:
+        optional: true
+      node-opus:
+        optional: true
+      opusscript:
+        optional: true
+      sodium:
+        optional: true
+      uws:
+        optional: true
+    resolution:
+      integrity: sha512-cK6rH1PuGjSjpmEQbnpuTxq1Yv8B89SotyKUFcr4RhnsiZnfBfDOev7DD7v5vhtEyyj51NuMWFoRJzgy/m08Uw==
   /discord.js/12.2.0:
     dependencies:
       '@discordjs/collection': 0.1.5
@@ -1283,6 +1327,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  /long/4.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
   /lowercase-keys/1.0.1:
     dev: true
     engines:
@@ -1710,6 +1758,10 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
+  /prism-media/0.0.4:
+    dev: false
+    resolution:
+      integrity: sha512-dG2w7WtovUa4SiYTdWn9H8Bd4JNdei2djtkP/Bk9fXq81j5Q15ZPHYSwhUVvBRbp5zMkGtu0Yk62HuMcly0pRw==
   /prism-media/1.2.2:
     dev: false
     peerDependencies:
@@ -1958,6 +2010,11 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-FtyOnWN/wCHTVXOMwvSv26d+ko5vWlIDD6zoUJ7LW8vh+ZBC8QdljveRP+crNrtBwioEUWy/4dMtbBjA4ioNlg==
+  /snekfetch/3.6.4:
+    deprecated: use node-fetch instead
+    dev: false
+    resolution:
+      integrity: sha512-NjxjITIj04Ffqid5lqr7XdgwM7X61c/Dns073Ly170bPQHLm6jkmelye/eglS++1nfTWktpP6Y2bFXjdPlQqdw==
   /source-map-resolve/0.5.3:
     dependencies:
       atob: 2.1.2
@@ -2310,6 +2367,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==
+  /ws/6.2.1:
+    dependencies:
+      async-limiter: 1.0.1
+    dev: false
+    resolution:
+      integrity: sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   /ws/7.3.0:
     dev: false
     engines:
@@ -2334,7 +2397,17 @@ packages:
     dev: false
     resolution:
       integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
+  github.com/esfox/discord-utils/81e3257cda484e632f2f815819ed247f59132021:
+    dependencies:
+      discord.js: 11.6.4
+      node-fetch: 2.6.0
+    dev: false
+    name: discord-utils
+    resolution:
+      tarball: 'https://codeload.github.com/esfox/discord-utils/tar.gz/81e3257cda484e632f2f815819ed247f59132021'
+    version: 1.0.2
 specifiers:
+  discord-utils: 'github:esfox/discord-utils'
   discord.js: ^12.2.0
   dotenv: ^8.2.0
   esm: ^3.2.25
