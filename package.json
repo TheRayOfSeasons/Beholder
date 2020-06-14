@@ -4,7 +4,7 @@
   "description": "A discord utiity bot for dungeons and dragons.",
   "main": "index.js",
   "scripts": {
-    "start": "node -r esm .",
+    "start": "node -r esm -r dotenv/config .",
     "dev": "nodemon",
     "initdb": "node -r esm api/database/migrations/create-tables.js"
   },
@@ -27,7 +27,8 @@
   "dependencies": {
     "discord.js": "^12.2.0",
     "knex": "^0.21.1",
-    "sqlite3": "^4.2.0"
+    "sqlite3": "^4.2.0",
+    "discord-utils": "github:esfox/discord-utils"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

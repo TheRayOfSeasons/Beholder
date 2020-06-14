@@ -1,24 +1,31 @@
-import { Event } from '../core/event';
+import { Command } from 'discord-utils';
 
 
-export class Roll extends Event
+module.exports = class extends Command
 {
-  start()
+  constructor()
   {
-    const validFormat = /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)+(\d+d\d+|\d+)$/i;
+    super();
+    this.keyword = 'roll';
+    this.aliases.push('r');
+  }
+
+  /** @param {import('discord-utils').Context} context*/
+  action(context)
+  {
+    const validFormat = /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)*(\d+d\d+|\d+)$/i;
 
     /* Regex for getting the operators. */
     const operatorRegex = /\+|\-|\*|\//g;
 
-    const message = this.message;
-    const text = message.content
+    const message = context.message;
+    const text = context.raw_parameters
       .toLowerCase()
-      .substring(2)
       .trim();
 
     /* Validate Input. */
     if(!validFormat.test(text))
-      return message.channel.send('Invalid format.');
+      return context.chat('Invalid format.');
 
     /* Split the message content by any of the operators. */
     const values = text.split(operatorRegex);
@@ -69,7 +76,7 @@ export class Roll extends Event
     let total = eval(operation);
     total = Math.round(total);
 
-    message.channel.send(`Breakdown: ${breakdown}\nTotal: ${total}`);
+    context.chat(`Breakdown: ${breakdown}\nTotal: ${total}`);
   }
 
   roll(dices, sides)
