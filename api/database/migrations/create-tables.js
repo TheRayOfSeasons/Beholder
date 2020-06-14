@@ -13,7 +13,8 @@ import { db } from '..';
     /* Create fields */
     table.increments('id');
     table.string('player_id', 25).notNullable();
-    table.string('name', 255);
+    table.string('name', 255).notNullable();
+    table.string('code', 255).notNullable();
     table.float('exp').defaultTo(0);
     table.string('class', 255);
 
@@ -83,8 +84,9 @@ import { db } from '..';
     table.string('languages', 500);
 
     /* Add indices */
-    table.index('player_id', 'player_id');
     table.index('name', `${tableName}_name`);
+    table.index('player_id', 'player_id');
+    table.index('code', `${tableName}_code`);
   })
     .catch(error => createError(error, tableName));
 
