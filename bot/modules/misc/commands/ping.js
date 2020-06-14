@@ -12,6 +12,6 @@ module.exports = class extends Command
   /** @param {import('discord-utils').Context} context*/
   action(context)
   {
-    context.chat('The Beholder pongs back.');
+    context.send('The Beholder pongs back.');
   }
 }
