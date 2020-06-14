@@ -13,12 +13,15 @@ module.exports = class extends Command
   /** @param {import('discord-utils').Context} context*/
   action(context)
   {
-    const validFormat = /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)*(\d+d\d+|\d+)$/i;
+    const validFormat = (
+      /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)*(\d+d\d+|\d+)+(\s+(adv|dis))*\s*$/i);
 
     /* Regex for getting the operators. */
     const operatorRegex = /\+|\-|\*|\//g;
+    const operationModifierRegex = /\s+adv\s*|\s+dis\s*/g;
+    const advantageRegex = /\s+adv\s*/g;
+    const disadvantageRegex = /\s+dis\s*/g;
 
-    const message = context.message;
     const text = context.raw_parameters
       .toLowerCase()
       .trim();
@@ -28,12 +31,19 @@ module.exports = class extends Command
       return context.chat('Invalid format.');
 
     /* Split the message content by any of the operators. */
-    const values = text.split(operatorRegex);
+    const values = text.replace(operationModifierRegex, '').split(operatorRegex);
 
     /* Get an array of the operators (to be used later to construct the operation). */
     const operators = text
       .split('')
       .filter(character => operatorRegex.test(character));
+
+    let adv = false;
+    let dis = false;
+    if(advantageRegex.test(text))
+      adv = true;
+    else if(disadvantageRegex.test(text))
+      dis = true;
 
     /* Array of each roll and resolved value of each roll. */
     let rolls = [];
@@ -43,7 +53,13 @@ module.exports = class extends Command
       const [dices, sides] = value.split('d');
 
       /* Perform a roll and get the rolls and the roll value. */
-      const rollData = this.roll(dices, sides)
+      let rollData;
+      if(adv)
+        rollData = this.advantageRoll(dices, sides);
+      else if(dis)
+        rollData = this.disadvantageRoll(dices, sides);
+      else
+        rollData = this.roll(dices, sides);
       rolls.push(rollData);
     }
 
@@ -64,10 +80,12 @@ module.exports = class extends Command
       );
 
     /* Build the breakdown of all the rolls. */
-    const breakdown = rolls.reduce((resultString, {rolls, rollValue}, index) =>
+    const breakdown = rolls.reduce((resultString, {disposed, rolls, rollValue}, index) =>
     {
       const rawRoll = values[index];
-      const rollBreakdown = rolls ? `\`[${rolls.join(', ')}]\`` : '';
+      const rollsText = rolls ? `[${rolls.join(', ')}]` : '';
+      const disposedRollsText = disposed ? ` ~~[${disposed.rolls.join(', ')}]~~` : '';
+      const rollBreakdown = rolls ? `${rollsText}${disposedRollsText}` : '';
       resultString += `${rawRoll.trim()} ${rollBreakdown.trim()} ${(_operators.shift() || '')}`;
       return resultString;
     }, '');
@@ -94,9 +112,50 @@ module.exports = class extends Command
     const rollValue = rolls.reduce((sum, roll) => sum + roll, 0);
     return (
       {
+        disposed: undefined,
         rolls,
         rollValue,
       }
     );
+  }
+
+  advantageRoll(dices, sides)
+  {
+    if(!sides)
+      return { rollValue: dices };
+
+    const firstRoll = this.roll(dices, sides);
+    const secondRoll = this.roll(dices, sides);
+    const [takenRoll, disposedRoll] =
+      firstRoll.rollValue > secondRoll.rollValue
+        ? [firstRoll, secondRoll]
+        : [secondRoll, firstRoll];
+    return (
+      {
+        disposed: disposedRoll,
+        rolls: takenRoll.rolls,
+        rollValue: takenRoll.rollValue,
+      }
+    )
+  }
+
+  disadvantageRoll(dices, sides)
+  {
+    if(!sides)
+      return { rollValue: dices };
+
+    const firstRoll = this.roll(dices, sides);
+    const secondRoll = this.roll(dices, sides);
+    const [takenRoll, disposedRoll] =
+      firstRoll.rollValue < secondRoll.rollValue
+        ? [firstRoll, secondRoll]
+        : [secondRoll, firstRoll];
+    return (
+      {
+        disposed: disposedRoll,
+        rolls: takenRoll.rolls,
+        rollValue: takenRoll.rollValue,
+      }
+    )
   }
 }
