@@ -1,3 +1,6 @@
 node_modules
 .env
 *.sqlite
+
+# Charles' other files folder
+others
