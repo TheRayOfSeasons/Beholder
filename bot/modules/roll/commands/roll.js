@@ -118,7 +118,7 @@ module.exports = class extends Command
     total = Math.round(total);
 
     label = hasText.test(label) ? label : 'Result';
-    context.chat(`Breakdown: ${breakdown}\n**${label}**: ${total}`);
+    context.chat(`Breakdown: ${breakdown}\n**${label}**: **\`${total}\`**`);
   }
 
   roll(dices, sides)
