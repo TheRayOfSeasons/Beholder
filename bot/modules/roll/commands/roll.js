@@ -13,8 +13,12 @@ module.exports = class extends Command
   /** @param {import('discord-utils').Context} context*/
   action(context)
   {
+    const rollFormatRegex = (
+      /((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)*(\d+d\d+|\d+)+(\s+(adv|dis))*\s*/i);
     const validFormat = (
-      /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)*(\d+d\d+|\d+)+(\s+(adv|dis))*\s*$/i);
+      /^((\d+d\d+|\d+)\s*(\+|\-|\*|\/)\s*)*(\d+d\d+|\d+)+(\s+(adv|dis))*(\s*|\s+.*)$/i);
+
+    const hasText = /[^-\s]/g;
 
     /* Regex for getting the operators. */
     const operatorRegex = /\+|\-|\*|\//g;
@@ -22,6 +26,7 @@ module.exports = class extends Command
     const advantageRegex = /\s+adv\s*/g;
     const disadvantageRegex = /\s+dis\s*/g;
 
+    const rawText = context.raw_parameters.trim();
     const text = context.raw_parameters
       .toLowerCase()
       .trim();
@@ -30,11 +35,29 @@ module.exports = class extends Command
     if(!validFormat.test(text))
       return context.chat('Invalid format.');
 
+    let label = rawText.replace(rollFormatRegex, '');
+    const labelRegexValue = label
+      .toLowerCase()
+      .split('')
+      .map(letter => {
+        const escapables = [
+          '.', '^', '$', '*', '+', '?', '(', ')', '[', '{', '\\', '|'
+        ];
+        return escapables.indexOf(letter) !== -1 ? `\\${letter}` : letter
+      })
+      .join('');
+    const labelRegex = new RegExp(`${labelRegexValue}`);
+
     /* Split the message content by any of the operators. */
-    const values = text.replace(operationModifierRegex, '').split(operatorRegex);
+    const values = text
+      .replace(operationModifierRegex, '')
+      .replace(labelRegex, '')
+      .split(operatorRegex);
 
     /* Get an array of the operators (to be used later to construct the operation). */
     const operators = text
+      .replace(operationModifierRegex, '')
+      .replace(labelRegex, '')
       .split('')
       .filter(character => operatorRegex.test(character));
 
@@ -94,7 +117,8 @@ module.exports = class extends Command
     let total = eval(operation);
     total = Math.round(total);
 
-    context.chat(`Breakdown: ${breakdown}\nTotal: ${total}`);
+    label = hasText.test(label) ? label : 'Result';
+    context.chat(`Breakdown: ${breakdown}\n**${label}**: **\`${total}\`**`);
   }
 
   roll(dices, sides)
