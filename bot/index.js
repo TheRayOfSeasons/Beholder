@@ -1,7 +1,6 @@
 import Discord from 'discord.js';
 import { Context } from 'discord-utils';
-import { config } from './config/config';
-
+import config from './config/config.json';
 
 const bot = new Discord.Client();
 const token = process.env.TOKEN;
