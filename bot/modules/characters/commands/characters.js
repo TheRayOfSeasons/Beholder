@@ -21,14 +21,14 @@ module.exports = class extends Command
     
     /* The given character name or code. */
     const characterQuery = context.parameters.shift();
-    this.charactersFound = await Characters.find(player, characterQuery);
+    const charactersFound = await Characters.find(player, characterQuery);
 
     /* If the found characters is just 1, send the character info.
       If not, send a list of characters to choose from. */
-    if(this.charactersFound.length === 1)
+    if(charactersFound.length === 1)
     {
       /* Get the first found character. */
-      const character = this.charactersFound.shift();
+      const character = charactersFound.shift();
 
       // TODO: Decide what info should be shown.
       const { name, code, level, class: characterClass } = character;
