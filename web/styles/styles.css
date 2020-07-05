@@ -1,0 +1,56 @@
+:root {
+  --bg-color: #353535;
+  --font-color: #dddddd;
+}
+
+/* ====================================================================== */
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+input {
+  height: initial !important;
+  background-color: #252525;
+  font-size: medium;
+  color: var(--font-color);
+  border: none;
+  padding: 0.5rem;
+}
+
+.large-input {
+  height: 2rem;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+}
+
+.small-input {
+  font-size: 0.8rem;
+  padding: 0.25rem;
+}
+
+form .character-name input {
+  font-size: 2rem;
+}
+
+@media (max-width: 767px) {
+  .large-input {
+    font-size: 1rem;
+  }
+
+  .character-name input {
+    font-size: 1.5rem !important;
+  }
+}
+@media (max-width: 425px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  input {
+    font-size: 0.9rem;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

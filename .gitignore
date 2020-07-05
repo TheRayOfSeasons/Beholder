@@ -4,3 +4,6 @@ node_modules
 
 # Charles' other files folder
 others
+
+# CSS map files
+*.css.map
