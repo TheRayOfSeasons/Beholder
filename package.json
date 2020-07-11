@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node -r esm -r dotenv/config .",
     "dev": "nodemon",
+    "webdev": "sass --watch web",
     "initdb": "node -r esm api/database/migrations/create-tables.js"
   },
   "repository": {
@@ -25,15 +26,16 @@
   },
   "homepage": "https://github.com/TheRayOfSeasons/Beholder#readme",
   "dependencies": {
+    "discord-utils": "github:esfox/discord-utils",
     "discord.js": "^12.2.0",
     "knex": "^0.21.1",
-    "sqlite3": "^4.2.0",
-    "discord-utils": "github:esfox/discord-utils"
+    "sqlite3": "^4.2.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "sass": "^1.26.9"
   },
   "nodemonConfig": {
     "ignore": [
