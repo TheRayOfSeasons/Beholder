@@ -11,98 +11,55 @@
 <body class="container">
   <form id="form" class="py-4 px-2 px-sm-0">
 
-    <div class="row align-items-end mb-3">
-      <div class="character-name col-12 col-lg-4 pl-0 pb-3 pb-lg-0">
-        <input class="col-10 col-sm-8 col-lg-12" name="name" placeholder="Character Name" type="text">
-      </div>
-
-      <div class="row col-12 col-lg-8">
-
-        <div class="col-12 d-flex mb-3 px-0">
-          <input class="col-3 mr-2 mr-sm-3" name="class" placeholder="Class" type="text">
-          <input class="col-2 mr-2 mr-sm-3" name="level" placeholder="Level" type="text">
-          <input class="col-3 mr-2 mr-sm-3" name="background" placeholder="Background" type="text">
-          <input class="col-4 col-sm-3" name="player_name" placeholder="Player Name" type="text">
+    <!-- Header forms -->
+    <div class="row border border-light p-2">
+      <div class="col-md-4 d-flex flex-column justify-content-between">
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn-success">Add Class</button>
         </div>
-
-        <div class="col-12 px-0">
-          <div class="d-flex">
-            <input class="col-4 mr-2 mr-sm-3" name="race" placeholder="Race" type="text">
-            <input class="col-4 mr-2 mr-sm-3" name="alignment" placeholder="Alignment" type="text">
-            <input class="col-4 " name="xp" placeholder="Experience" type="text">
+        <div class="d-flex flex-column">
+          <input class="form-control bg-dark text-light" type="text" name="character_name" id="CharacterName">
+          <label for="CharacterName">Character Name</label>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-6">
+                <input class="form-control bg-dark text-light" type="text" name="class" id="Class">
+                <label for="Class">Class</label>
+              </div>
+              <div class="col-md-6">
+                <input class="form-control bg-dark text-light" type="number" name="level" id="Level">
+                <label for="level">Level</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <input class="form-control bg-dark text-light" type="text" name="background" id="Background">
+            <label for="Background">Background</label>
+          </div>
+          <div class="col-md-4">
+            <input class="form-control bg-dark text-light" type="text" name="player_name" id="PlayerName">
+            <label for="PlayerName">Player Name</label>
           </div>
         </div>
-        
-      </div>
-    </div>
-
-    <div class="row justify-content-center justify-content-sm-start">
-      <div class="row col-12 col-lg-4 justify-content-center justify-content-sm-start px-0 px-sm-3">
-  
-          <div class="col-12 col-lg-4 row justify-content-center">
-            
-            <div class="col-5 col-sm col-lg-12 text-center p-0 mx-1">
-              <input name="strength" placeholder="STR" type="text"
-                class="large-input col-6 col-sm col-lg-12 mr-2 mr-sm-3 mr-lg-0 text-center">
-              <input name="strength_mod" type="text"
-                class="small-input col-4 col-sm-6 mt-1 mb-3 text-center">
-            </div>
-
-            <div class="col-5 col-sm col-lg-12 text-center p-0 mx-1">
-              <input name="dexterity" placeholder="DEX" type="text"
-                class="large-input col-6 col-sm col-lg-12 mr-2 mr-sm-3 mr-lg-0 text-center">
-              <input name="dexterity_mod" type="text"
-                class="small-input col-4 col-sm-6 mt-1 mb-3 text-center">
-            </div>
-
-            <div class="col-5 col-sm col-lg-12 text-center p-0 mx-1">
-              <input name="constitution" placeholder="CON" type="text"
-                class="large-input col-6 col-sm col-lg-12 mr-2 mr-sm-3 mr-lg-0 text-center">
-              <input name="constitution_mod" type="text"
-                class="small-input col-4 col-sm-6 mt-1 mb-3 text-center">
-            </div>
-
-            <div class="col-5 col-sm col-lg-12 text-center p-0 mx-1">
-              <input name="intelligence" placeholder="INT" type="text"
-                class="large-input col-6 col-sm col-lg-12 mr-2 mr-sm-3 mr-lg-0 text-center">
-              <input name="intelligence_mod" type="text"
-                class="small-input col-4 col-sm-6 mt-1 mb-3 text-center">
-            </div>
-
-            <div class="col-5 col-sm col-lg-12 text-center p-0 mx-1">
-              <input name="wisdom" placeholder="WIS" type="text"
-                class="large-input col-6 col-sm col-lg-12 mr-2 mr-sm-3 mr-lg-0 text-center">
-              <input name="wisdom_mod" type="text"
-                class="small-input col-4 col-sm-6 mt-1 mb-3 text-center">
-            </div>
-
-            <div class="col-5 col-sm col-lg-12 text-center p-0 mx-1">
-              <input name="charisma" placeholder="CHA" type="text"
-                class="large-input col-6 col-sm col-lg-12 mr-2 mr-sm-3 mr-lg-0 text-center">
-              <input name="charisma_mod" type="text"
-                class="small-input col-4 col-sm-6 mt-1 mb-3 text-center">
-            </div>
-
+        <div class="row">
+          <div class="col-md-4">
+            <input class="form-control bg-dark text-light" type="text" name="race" id="Race">
+            <label for="Race">Race</label>
           </div>
-    
-          <div class="col-12 col-lg-8 px-0 pl-lg-3">
-            <div class="d-flex align-items-center mb-3">
-              <input class="large-input col-4 text-center" type="text">
-              <span class="ml-3">Inspiration</span>
-            </div>
-            <div class="d-flex align-items-center">
-              <input class="large-input col-4 text-center" type="text">
-              <span class="ml-3">Proficiency Bonus</span>
-            </div>
+          <div class="col-md-4">
+            <input class="form-control bg-dark text-light" type="text" name="alignment" id="Alignment">
+            <label for="Alignment">Alignment</label>
           </div>
+          <div class="col-md-4">
+            <input class="form-control bg-dark text-light" type="number" name="experience" id="Experience">
+            <label for="Experience">Experience Points</label>
+          </div>
+        </div>
       </div>
-
-      <div class="col-12 col-lg-4">
-      </div>
-
-      <div class="col-12 col-lg-4">
-      </div>
-
     </div>
   </form>
   <script src="../js/script.js"></script>
