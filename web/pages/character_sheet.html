@@ -374,6 +374,79 @@
             <div class="card-footer"><small>Speed</small></div>
           </div>
         </div>
+
+        <!-- Hit Points -->
+        <div class="card bg-dark mx-1 my-3">
+          <div class="card-header">
+            <div class="d-flex">
+              <div class="col-md-7"><h6>Hit Point Maximum</h6></div>
+              <div class="col-md-5">
+                <input class="form-control bg-dark text-light" type="number" name="hit_point_maximum" id="HitPointMaximum">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <input class="form-control bg-dark text-light" type="number" name="hit_points" id="HitPoints">
+          </div>
+          <div class="card-footer text-center">
+            <h5>Hit Points</h5>
+          </div>
+        </div>
+
+        <!-- Temporary Hitpoints -->
+        <div class="card bg-dark m-1">
+          <div class="card-body">
+            <input class="form-control bg-dark text-light" type="number" name="temporary_hit_points" id="TemporaryHitPoints">
+          </div>
+          <div class="card-footer text-center">
+            <h5>Temporary Hit Points</h5>
+          </div>
+        </div>
+
+        <!-- Hit Dice -->
+        <div class="d-flex flex-row">
+          <div class="col-md-6 p-0">
+            <div class="card bg-dark mx-1">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-5">Total</div>
+                  <div class="col-md-7">
+                    <input class="form-control bg-dark text-light" size="3" type="number" name="hit_dice_total" id="HitDiceTotal">
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <input class="form-control bg-dark text-light" size="3" type="text" name="hit_dice" id="HitDice">
+              </div>
+              <div class="card-footer text-center">
+                <h6>Hit Dice</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 p-0">
+            <div class="card bg-dark mx-1">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    Success
+                  </div>
+                  <input class="col-md-2" type="checkbox" name="death_save_success_1" id="DeathSaveSuccess1">
+                  <input class="col-md-2" type="checkbox" name="death_save_success_2" id="DeathSaveSuccess2">
+                  <input class="col-md-2" type="checkbox" name="death_save_success_3" id="DeathSaveSuccess3">
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    Failure
+                  </div>
+                  <input class="col-md-2" type="checkbox" name="death_save_fail_1" id="DeathSaveFail1">
+                  <input class="col-md-2" type="checkbox" name="death_save_fail_2" id="DeathSaveFail2">
+                  <input class="col-md-2" type="checkbox" name="death_save_fail_3" id="DeathSaveFail3">
+                </div>
+              </div>
+              <div class="card-footer"><h6>Death Saves</h6></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-md-4 border border-light">a</div>
     </div>
