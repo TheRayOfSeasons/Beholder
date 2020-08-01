@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../styles/bootstrap.min.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <title>Beholder Character Sheet</title>
+</head>
+<body class="container">
+  <form id="form" class="py-4 px-2 px-sm-0">
+
+    <!-- Header forms -->
+    <div class="card bg-dark">
+      <div class="card-body">
+        <div class="row p-2">
+          <div class="col-md-4 d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-success">Add Class</button>
+            </div>
+            <div class="d-flex flex-column">
+              <input class="form-control bg-dark text-light" type="text" name="character_name" id="CharacterName">
+              <label for="CharacterName">Character Name</label>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input class="form-control bg-dark text-light" type="text" name="class" id="Class">
+                    <label for="Class">Class</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input class="form-control bg-dark text-light" type="number" name="level" id="Level">
+                    <label for="level">Level</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control bg-dark text-light" type="text" name="background" id="Background">
+                <label for="Background">Background</label>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control bg-dark text-light" type="text" name="player_name" id="PlayerName">
+                <label for="PlayerName">Player Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <input class="form-control bg-dark text-light" type="text" name="race" id="Race">
+                <label for="Race">Race</label>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control bg-dark text-light" type="text" name="alignment" id="Alignment">
+                <label for="Alignment">Alignment</label>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control bg-dark text-light" type="number" name="experience" id="Experience">
+                <label for="Experience">Experience Points</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-4 p-0">
+        <div class="d-flex flex-column">
+          <div class="row">
+            <div class="col-md-4 p-0">
+
+              <!-- Strength -->
+              <div class="card bg-dark my-1">
+                <div class="card-header text-center">
+                  <h6>Strength</h6>
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <input class="form-control bg-dark text-light" type="number" name="strenghtModifier" id="StrengthModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="strenghtScore" id="StrengthScore">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dexterity -->
+              <div class="card bg-dark my-1">
+                <div class="card-header text-center">
+                  <h6>Dexterity</h6>
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <input class="form-control bg-dark text-light" type="number" name="dexterityModifier" id="DexterityModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="dexterityScore" id="DexterityScore">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Constitution -->
+              <div class="card bg-dark my-1">
+                <div class="card-header text-center">
+                  <h6>Constitution</h6>
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <input class="form-control bg-dark text-light" type="number" name="constitutionModifier" id="ConstitutionModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="constitutionScore" id="ConstitutionScore">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Intelligence -->
+              <div class="card bg-dark my-1">
+                <div class="card-body">
+                  <div class="card-title text-center"><h6>Intelligence</h6></div>
+                  <div class="card-text">
+                    <input class="form-control bg-dark text-light" type="number" name="intelligenceModifier" id="IntelligenceModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="intelligenceScore" id="IntelligenceScore">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Wisdom -->
+              <div class="card bg-dark my-1">
+                <div class="card-header text-center">
+                  <h6>Wisdom</h6>
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <input class="form-control bg-dark text-light" type="number" name="wisdomModifier" id="WisdomModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="wisdomScore" id="WisdomScore">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Charisma -->
+              <div class="card bg-dark my-1">
+                <div class="card-header text-center">
+                  <h6>Charisma</h6>
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <input class="form-control bg-dark text-light" type="number" name="charismaModifier" id="CharismaModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="charismaScore" id="CharismaScore">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-8">
+
+              <!-- Inspiration -->
+              <div class="card bg-dark my-1">
+                <div class="card-body">
+                  <div class="d-flex">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="inspiration" id="Inspiration">
+                    <h5 class="col-md-8"><label for="Inspiration">Inspiration</label></h5>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Proficiency Bonus -->
+              <div class="card bg-dark my-1">
+                <div class="card-body">
+                  <div class="d-flex">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="proficiency_bonus" id="ProficiencyBonus">
+                    <h5 class="col-md-8"><label for="ProficiencyBonus">Proficiency Bonus</label></h5>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Saving Throws -->
+              <div class="card bg-dark my-1">
+                <div class="card-header text-center">
+                  <h6>Saving Throws</h6>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="strength_save" id="StrengthSave">
+                    <small class="col-md-7"><label for="StrengthSave">Strength</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="dexterity_save" id="DexteritySave">
+                    <small class="col-md-7"><label for="DexteritySave">Dexterity</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="constitution_save" id="ConstitutionSave">
+                    <small class="col-md-7"><label for="ConstitutionSave">Constitution</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="intelligence_save" id="IntelligenceSave">
+                    <small class="col-md-7"><label for="IntelligenceSave">Intelligence</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="wisdom_save" id="WisdomSave">
+                    <small class="col-md-7"><label for="WisdomSave">Wisdom</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="charisma_save" id="CharismaSave">
+                    <small class="col-md-7"><label for="CharismaSave">Charisma</label></small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card bg-dark my-1">
+                <div class="card-header text-center">
+                  <h6>Skills</h6>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="acrobatics" id="Acrobatics">
+                    <small class="col-md-7"><label for="Acrobatics">Acrobatics (Dex)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="animal_handling" id="AnimalHandling">
+                    <small class="col-md-7"><label for="AnimalHandling">Animal Handling (Wis)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="arcana" id="Arcana">
+                    <small class="col-md-7"><label for="Arcana">Arcana (Int)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="athletics" id="Athlethics">
+                    <small class="col-md-7"><label for="Athlethics">Athlethics (Str)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="deception" id="Deception">
+                    <small class="col-md-7"><label for="Deception">Deception (Cha)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="history" id="History">
+                    <small class="col-md-7"><label for="History">History (Int)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="insight" id="Insight">
+                    <small class="col-md-7"><label for="Insight">Insight (Wis)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="intimidation" class="Intimidation">
+                    <small class="col-md-7"><label for="Intimidation">Intimidation (Cha)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="investigation" id="Investigation">
+                    <small class="col-md-7"><label for="Investigation">Investigation (Int)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="nature" id="Nature">
+                    <small class="col-md-7"><label for="Nature">Nature (Int)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="perception" id="Perception">
+                    <small class="col-md-7"><label for="Perception">Perception (Wis)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="performance" id="Performance">
+                    <small class="col-md-7"><label for="Performance">Performance (Cha)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="religion" id="Religion">
+                    <small class="col-md-7"><label for="Religion">Religion (Int)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="Sleight of Hand" id="Sleight of Hand">
+                    <small class="col-md-7"><label for="Sleight of Hand">Sleight of Hand (Dex)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="Stealth" id="Stealth">
+                    <small class="col-md-7"><label for="Stealth">Stealth (Dex)</label></small>
+                  </div>
+                  <div class="d-flex">
+                    <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="Survival" id="Survival">
+                    <small class="col-md-7"><label for="Survival">Survival (Wis)</label></small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Passive Perception -->
+          <div class="card bg-dark my-1">
+            <div class="card-body d-flex">
+              <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="passive_perception" id="PassivePerception">
+              <h5 class="col-md-8"><label for="PassivePerception">Passive Perception</label></h5>
+            </div>
+          </div>
+
+          <!-- Other Proficiencies -->
+          <div class="card bg-dark my-1">
+            <div class="card-header"><h5>Other Proficiencies</label></div>
+            <div class="card-body">
+              <div id="OtherProficiencies">
+                <input class="col-md-12 form-control bg-dark text-light" type="text" name="other_proficiency_1" id="OtherProficiency1">
+              </div>
+              <div class="d-flex flex-row justify-content-around mt-3" id="OtherProficiencyButtons">
+                <button type="button" class="btn btn-success" id="AddOtherProficiency">+</button>
+                <button type="button" class="btn btn-danger" id="RemoveOtherProficiency">-</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="card bg-dark my-1">
+            <div class="card-header"><h5>Languages</label></div>
+            <div class="card-body">
+              <div id="OtherProficiencies">
+                <input class="col-md-12 form-control bg-dark text-light" type="text" name="language_1" id="Language1">
+              </div>
+              <div class="d-flex flex-row justify-content-around mt-3" id="OtherProficiencyButtons">
+                <button type="button" class="btn btn-success" id="AddLanguage">+</button>
+                <button type="button" class="btn btn-danger" id="RemoveLanguage">-</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 p-0">
+        <div class="d-flex flex-row justify-content-around">
+          <div class="card bg-dark mx-1">
+            <div class="card-body">
+              <input class="form-control bg-dark text-light" size="3" type="number" name="armor_class" id="ArmorClass">
+            </div>
+            <div class="card-footer"><small>Armor Class</small></div>
+          </div>
+          <div class="card bg-dark mx-1">
+            <div class="card-body">
+              <input class="form-control bg-dark text-light" size="3" type="number" name="initiative" id="Initiative">
+            </div>
+            <div class="card-footer"><small>Initiative</small></div>
+          </div>
+          <div class="card bg-dark mx-1">
+            <div class="card-body">
+              <input class="form-control bg-dark text-light" size="3" type="number" name="speed" id="Speed">
+            </div>
+            <div class="card-footer"><small>Speed</small></div>
+          </div>
+        </div>
+
+        <!-- Hit Points -->
+        <div class="card bg-dark mx-1 my-3">
+          <div class="card-header">
+            <div class="d-flex">
+              <div class="col-md-7"><h6>Hit Point Maximum</h6></div>
+              <div class="col-md-5">
+                <input class="form-control bg-dark text-light" type="number" name="hit_point_maximum" id="HitPointMaximum">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <input class="form-control bg-dark text-light" type="number" name="hit_points" id="HitPoints">
+          </div>
+          <div class="card-footer text-center">
+            <h5>Hit Points</h5>
+          </div>
+        </div>
+
+        <!-- Temporary Hitpoints -->
+        <div class="card bg-dark m-1">
+          <div class="card-body">
+            <input class="form-control bg-dark text-light" type="number" name="temporary_hit_points" id="TemporaryHitPoints">
+          </div>
+          <div class="card-footer text-center">
+            <h5>Temporary Hit Points</h5>
+          </div>
+        </div>
+
+        <!-- Hit Dice -->
+        <div class="d-flex flex-row">
+          <div class="col-md-6 p-0">
+            <div class="card bg-dark mx-1">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-5">Total</div>
+                  <div class="col-md-7">
+                    <input class="form-control bg-dark text-light" size="3" type="number" name="hit_dice_total" id="HitDiceTotal">
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <input class="form-control bg-dark text-light" size="3" type="text" name="hit_dice" id="HitDice">
+              </div>
+              <div class="card-footer text-center">
+                <h6>Hit Dice</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 p-0">
+            <div class="card bg-dark mx-1">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    Success
+                  </div>
+                  <input class="col-md-2" type="checkbox" name="death_save_success_1" id="DeathSaveSuccess1">
+                  <input class="col-md-2" type="checkbox" name="death_save_success_2" id="DeathSaveSuccess2">
+                  <input class="col-md-2" type="checkbox" name="death_save_success_3" id="DeathSaveSuccess3">
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    Failure
+                  </div>
+                  <input class="col-md-2" type="checkbox" name="death_save_fail_1" id="DeathSaveFail1">
+                  <input class="col-md-2" type="checkbox" name="death_save_fail_2" id="DeathSaveFail2">
+                  <input class="col-md-2" type="checkbox" name="death_save_fail_3" id="DeathSaveFail3">
+                </div>
+              </div>
+              <div class="card-footer"><h6>Death Saves</h6></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attacks and Spellcasting -->
+        <div class="card bg-dark mx-1 my-2">
+          <div class="card-body">
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>ATK Bonus</th>
+                <th>Damage/Type</th>
+              </tr>
+              <tr>
+                <td>
+                  <input class="form-control bg-dark text-light" type="text" name="atk_name_1" id="AttackName1">
+                </td>
+                <td>
+                  <input class="form-control bg-dark text-light" type="text" name="atk_bonus_1" id="AttackBonus1">
+                </td>
+                <td>
+                  <input class="form-control bg-dark text-light" type="text" name="atk_damage_1" id="AttackDamage1">
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger" id="removeAtk">-</button>
+                </td>
+              </tr>
+            </table>
+            <div class="d-flex flex-row-reverse my-1">
+              <button type="button" class="btn btn-success">Add</button>
+            </div>
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center">Attacks & Spellcasting</h6>
+          </div>
+        </div>
+
+        <!-- Currency -->
+        <div class="card bg-dark mx-1 my-2">
+          <div class="card-body">
+            <div class="d-flex">
+              <label class="col-md-3" for="CopperPoints"><h5>CP</h5></label>
+              <input class="col-md-9 form-control bg-dark text-light" type="number" name="copper_points" id="CopperPoints">
+            </div>
+            <div class="d-flex justify-content-around">
+              <label class="col-md-3" for="SilverPoints"><h5>SP</h5></label>
+              <input class="col-md-9 form-control bg-dark text-light" type="number" name="silver_points" id="SilverPoints">
+            </div>
+            <div class="d-flex justify-content-around">
+              <label class="col-md-3" for="ElectrumPoints"><h5>EP</h5></label>
+              <input class="col-md-9 form-control bg-dark text-light" type="number" name="electrum_points" id="ElectrumPoints">
+            </div>
+            <div class="d-flex justify-content-around">
+              <label class="col-md-3" for="GoldPoints"><h5>GP</h5></label>
+              <input class="col-md-9 form-control bg-dark text-light" type="number" name="gold_points" id="GoldPoints">
+            </div>
+            <div class="d-flex justify-content-around">
+              <label class="col-md-3" for="PlatiumPoints"><h5>PP</h5></label>
+              <input class="col-md-9 form-control bg-dark text-light" type="number" name="platinum_points" id="PlatiumPoints">
+            </div>
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center">Currency</h6>
+          </div>
+        </div>
+
+        <!-- Equipment -->
+        <div class="card bg-dark mx-1 my-2">
+          <div class="card-header">
+            <h6>Equipment</h6>
+          </div>
+          <div class="card-body">
+
+            <div id="Equipment1">
+              <div class="d-flex">
+                <label class="col-md-3" for="ItemName1">Name</label>
+                <input class="col-md-9 form-control bg-dark text-light" type="text" name="item_name_1" id="ItemName1">
+              </div>
+              <label for="ItemDescription1">Description</label>
+              <textarea class="form-control bg-dark text-light" type="text" name="item_description_1" id="ItemDescription1" col="30" row="10"></textarea>
+              <hr>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="d-flex flex-row-reverse">
+              <button type="button" class="btn btn-success" id="AddEquipment">Add Equipment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+
+        <!-- Personality Traits -->
+        <div class="card bg-dark mb-2">
+          <div class="card-body">
+            <textarea class="form-control bg-dark text-light" name="personality_traits" id="PersonalityTraits" cols="30" rows="3"></textarea>
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center">Personality Traits</h6>
+          </div>
+        </div>
+
+        <!-- Ideals -->
+        <div class="card bg-dark my-2">
+          <div class="card-body">
+            <textarea class="form-control bg-dark text-light" name="ideals" id="Ideals" cols="30" rows="3"></textarea>
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center">Ideals</h6>
+          </div>
+        </div>
+
+        <!-- Bonds -->
+        <div class="card bg-dark my-2">
+          <div class="card-body">
+            <textarea class="form-control bg-dark text-light" name="bonds" id="Bonds" cols="30" rows="3"></textarea>
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center">Bonds</h6>
+          </div>
+        </div>
+
+        <!-- Flaws -->
+        <div class="card bg-dark my-2">
+          <div class="card-body">
+            <textarea class="form-control bg-dark text-light" name="flaws" id="Flaws" cols="30" rows="3"></textarea>
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center">Flaws</h6>
+          </div>
+        </div>
+
+        <!-- Features and Traits -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <h6>Features and Traits</h6>
+          </div>
+          <div class="card-body">
+
+            <div id="Feature1">
+              <div class="d-flex">
+                <label class="col-md-3" for="FeatureName1">Name</label>
+                <input class="col-md-9 form-control bg-dark text-light" type="text" name="feature_name_1" id="FeatureName1">
+              </div>
+              <label for="ItemName1">Description</label>
+              <textarea class="form-control bg-dark text-light" type="text" name="feature_description_1" id="FeatureDescription1" col="30" row="10"></textarea>
+              <hr>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="d-flex flex-row-reverse">
+              <button type="button" class="btn btn-success" id="AddFeature">Add Feature</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </form>
+  <script src="../js/script.js"></script>
+</body>
+</html>
