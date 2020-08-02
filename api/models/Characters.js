@@ -67,21 +67,18 @@ class CharactersModel extends Model
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
   /**
-   * Returns a query builder instance given
-   * a Discord ID and a character name or code.
+   * Returns a query builder instance given a Discord ID and a character code.
    * 
    * @param {string} user Discord ID of the player to get characters from.
-   * @param {string} nameOrCode Name or code of the character to find.
+   * @param {string} code Code of the character to find.
    */
-  _find(player, nameOrCode)
+  _find(player, code)
   {
     return this.query()
-      .where(`${this.table}.player_id`, player)
-      .andWhere(query =>
+      .where(
       {
-        query
-          .where(`${this.table}.name`, 'like', `%${nameOrCode}%`)
-          .orWhere(`${this.table}.code`, 'like', `%${nameOrCode}%`)
+        'player_id': player,
+        'code': code,
       });
   }
 
@@ -89,17 +86,17 @@ class CharactersModel extends Model
 
   /**
    * Gets the character/s of a player given the player's
-   * Discord ID and a character name or code.
+   * Discord ID and a character code.
    * Only includes the character name, code, class, level, and race
    * of each character found.
    * 
    * @param {string} player Discord ID of the player to get a character from.
-   * @param {string} nameOrCode Name or code of characters to find.
+   * @param {string} code Code of characters to find.
    * @returns {Promise<BasicCharacter[]>}
    */
-  find(player, nameOrCode)
+  find(player, code)
   {
-    return this._find(player, nameOrCode)
+    return this._find(player, code)
       .select([ 'name', 'code', 'class', 'level', 'race' ])
       .catch(console.error);
   }
@@ -108,19 +105,60 @@ class CharactersModel extends Model
 
   /**
    * Gets the character of a player given a player's
-   * Discord ID and the character's name or code.
-   * This only gets the first character found with the given name or code.
+   * Discord ID and the character's code.
+   * This only gets the first character found with the given code.
    * 
    * @param {string} player Discord ID of the player to get a character from.
-   * @param {string} nameOrCode Name or code of the character to find.
+   * @param {string} code Code of the character to find.
    * @returns {Promise<Character>}
    */
-  findOne(player, nameOrCode)
+  findOne(player, code)
   {
-    return this._find(player, nameOrCode)
+    return this._find(player, code)
       .limit(1)
       .first()
       .catch(console.error);
+  }
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  
+  /**
+   * Get one specific data of a player's character.
+   * 
+   * @param {string} player Discord ID of the player to get a character from.
+   * @param {string} code Code of the character to find.
+   * @param {string} data Name of the data to get.
+   */
+  async getData(player, code, data)
+  {
+    let queryResult = await this
+      ._find(player, code)
+      .select(data)
+      .catch(console.error);
+
+    if(!queryResult)
+      return;
+
+    queryResult = queryResult.map(data => Object.values(data).shift());
+    return queryResult.length === 1
+      ? queryResult.shift()
+      : queryResult;
+  }
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+  /**
+   * Retturns a query builder with a join of a table of a property of a character.
+   * 
+   * @param {string} player Discord ID of the player to get a character from.
+   * @param {string} code Code of the character to find.
+   * @param {string} property Name of the table to join. 
+   */
+  joinProperty(player, code, property)
+  {
+    return this
+      ._find(player, code)
+      .leftJoin(property, 'char_id', '=', 'characters.id');
   }
 }
 

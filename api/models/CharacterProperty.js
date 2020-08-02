@@ -22,11 +22,37 @@ export class CharacterProperty extends Model
    */
   async ofCharacter(player, code)
   {
-    const character = await Characters.findOne(player, code);
-    return this.query()
-      .where('char_id', character.id)
-      .limit(1)
-      .first()
+    const queryResult = await Characters
+      .joinProperty(player, code, this.table)
       .catch(console.error);
+
+    return queryResult.length === 1
+      ? queryResult.shift()
+      : queryResult;
+  }
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+  /**
+   * Get one specific data of a player's character.
+   * 
+   * @param {string} player Discord ID of the player to get a character from.
+   * @param {string} code Code of the character to find.
+   * @param {string} data Name of the data to get.
+   */
+  async getData(player, code, data)
+  {
+    let queryResult = await Characters
+      .joinProperty(player, code, this.table)
+      .select(data)
+      .catch(console.error);
+
+    if(!queryResult)
+      return;
+
+    queryResult = queryResult.map(data => Object.values(data).shift());
+    return queryResult.length === 1
+      ? queryResult.shift()
+      : queryResult;
   }
 }
