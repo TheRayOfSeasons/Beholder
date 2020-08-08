@@ -1,5 +1,5 @@
 import { Command } from 'discord-utils';
-import { Command } from 'discord.js';
+import { Message } from 'discord.js';
 
 
 module.exports = class extends Command
