@@ -116,9 +116,28 @@ module.exports = class extends Command
     /* Evaluate all the rolls (from the built operation string). */
     let total = eval(operation);
     total = Math.round(total);
+    let reactionImage = '';
+
+    if(values[0] == '1d20')
+    {
+      const [dices, sides] = values[0].split('d');
+      if(sides == 20)
+      {
+        if(total == 20)
+        {
+          reactionImage = process.env.CRIT_IMAGE || "Crit!";
+        }
+        else if(total == 1)
+        {
+          reactionImage = process.env.FAIL_IMAGE || "Unlucky bastard!";
+        }
+      }
+
+    }
 
     label = hasText.test(label) ? label : 'Result';
     context.chat(`Breakdown: ${breakdown}\n**${label}**: **\`${total}\`**`);
+    context.chat(reactionImage);
   }
 
   roll(dices, sides)
