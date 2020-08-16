@@ -7,7 +7,7 @@ module.exports = class extends Command
   constructor()
   {
     super();
-    this.keyword = 'banana-bread';
+    this.keyword = 'bananabread';
     this.aliases.push('bb');
   }
 
@@ -16,5 +16,6 @@ module.exports = class extends Command
   {
     context.chat(':banana::bread:');
     context.chat(`https://4.bp.blogspot.com/-Vrs8Do2sALI/WIzfZZwsdGI/AAAAAAAAKSw/xtYcAxKyYDAA5bHNqfnSlPS7b6qnJBDUwCLcB/s1600/flour-less%2Bbread.jpg`);
+    context.chat(`https://www.youtube.com/watch?v=KQ5bUkk6iW0`);
   }
 }

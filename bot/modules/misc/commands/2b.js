@@ -6,13 +6,12 @@ module.exports = class extends Command
   constructor()
   {
     super();
-    this.keyword = 'died';
-    this.aliases.push('d');
+    this.keyword = '2b';
   }
 
   /** @param {import('discord-utils').Context} context*/
   action(context)
   {
-    context.chat('https://media.discordapp.net/attachments/490882692792057866/741691922145476668/hqdefault.png');
+    context.chat(`https://vignette.wikia.nocookie.net/nier/images/3/38/YoRHa_No.2_Type_B.png/revision/latest/scale-to-width-down/234?cb=20170322051325`);
   }
 }
