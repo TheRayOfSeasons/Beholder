@@ -671,6 +671,311 @@
         </div>
       </div>
     </div>
+
+    <!-- page 3 -->
+    <div class="card bg-dark my-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <input class="form-control bg-dark text-light" type="text" name="spellcasting_class" id="SpellcastingClass">
+            <label for="SpellcastingClass">Spellcasting Class</label>
+          </div>
+          <div class="col-md-3">
+            <input class="form-control bg-dark text-light" type="text" name="spellcasting_ability" id="SpellcastingAbility">
+            <label for="SpellcastingAbility">Spellcasting Ability</label>
+          </div>
+          <div class="col-md-3">
+            <input class="form-control bg-dark text-light" type="number" name="spell_dc" id="SpellDC">
+            <label for="SpellDC">Spell Save DC</label>
+          </div>
+          <div class="col-md-3">
+            <input class="form-control bg-dark text-light" type="number" name="spell_atk_bonus" id="SpellAttackBonus">
+            <label for="SpellAttackBonus">Spell Attack Bonus</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spells -->
+    <div class="row my-2">
+      <div class="col-md-4">
+
+        <!-- Cantrips -->
+        <div class="card bg-dark my-2">
+          <div class="card-header"><h5>Cantrips</h5></div>
+          <div class="card-body">
+            <div id="Cantrips">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="cantrip_1" id="Cantrip-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveCantrip-1">-</button>
+              </div>
+            </div>
+            <div id="CantripActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddCantrip">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 1 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">1</h4>
+              <div class="ml-2">
+                <label for="SpellOneSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_one_slots_total" id="SpellOneSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellOneSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_one_slots_expended" id="SpellOneSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellOne">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_one_1" id="Spell-One-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellOne-1">-</button>
+              </div>
+            </div>
+            <div id="SpellOneActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellOne">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 2 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">2</h4>
+              <div class="ml-2">
+                <label for="SpellTwoSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_two_slots_total" id="SpellTwoSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellTwoSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_two_slots_expended" id="SpellTwoSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellTwo">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_two_1" id="Spell-Two-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellTwo-1">-</button>
+              </div>
+            </div>
+            <div id="SpellTwoActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellTwo">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+
+        <!-- Level 3 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">3</h4>
+              <div class="ml-2">
+                <label for="SpellThreeSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_three_slots_total" id="SpellThreeSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellThreeSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_three_slots_expended" id="SpellThreeSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellThree">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_three_1" id="Spell-Three-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellThree-1">-</button>
+              </div>
+            </div>
+            <div id="SpellThreeActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellThree">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 4 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">4</h4>
+              <div class="ml-2">
+                <label for="SpellFourSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_four_slots_total" id="SpellFourSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellFourSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_four_slots_expended" id="SpellFourSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellFour">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_four_1" id="Spell-Four-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellFour-1">-</button>
+              </div>
+            </div>
+            <div id="SpellFourActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellFour">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 5 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">5</h4>
+              <div class="ml-2">
+                <label for="SpellFiveSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_five_slots_total" id="SpellFiveSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellFiveSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_five_slots_expended" id="SpellFiveSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellFive">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_five_1" id="Spell-Five-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellFive-1">-</button>
+              </div>
+            </div>
+            <div id="SpellFiveActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellFive">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 6 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">6</h4>
+              <div class="ml-2">
+                <label for="SpellSixSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_six_slots_total" id="SpellSixSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellSixSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_six_slots_expended" id="SpellSixSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellSix">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_six_1" id="Spell-Six-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellSix-1">-</button>
+              </div>
+            </div>
+            <div id="SpellSixActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellSix">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+
+        <!-- Level 7 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">7</h4>
+              <div class="ml-2">
+                <label for="SpellSevenSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_seven_slots_total" id="SpellSevenSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellSevenSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_seven_slots_expended" id="SpellSevenSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellSeven">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_seven_1" id="Spell-Seven-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellSeven-1">-</button>
+              </div>
+            </div>
+            <div id="SpellSevenActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellSeven">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 8 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">8</h4>
+              <div class="ml-2">
+                <label for="SpellEightSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_eight_slots_total" id="SpellEightSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellEightSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_eight_slots_expended" id="SpellEightSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellEight">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_eight_1" id="Spell-Eight-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellEight-1">-</button>
+              </div>
+            </div>
+            <div id="SpellEightActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellEight">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 9 Spells -->
+        <div class="card bg-dark my-2">
+          <div class="card-header">
+            <div class="d-flex flex-row">
+              <h4 class="p-2">9</h4>
+              <div class="ml-2">
+                <label for="SpellNineSlotsTotal">Slots Total</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_nine_slots_total" id="SpellNineSlotsTotal">
+              </div>
+              <div class="ml-2">
+                <label for="SpellNineSlotsExpended">Slots Expended</label>
+                <input class="form-control bg-dark text-light" type="number" name="spell_nine_slots_expended" id="SpellNineSlotsExpended">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="SpellNine">
+              <div class="d-flex flex-row">
+                <input class="form-control bg-dark text-light" type="text" name="spell_nine_1" id="Spell-Nine-1">
+                <button type="button" class="btn btn-danger ml-1" id="RemoveSpellNine-1">-</button>
+              </div>
+            </div>
+            <div id="SpellNineActions" class="d-flex flex-row-reverse mt-2">
+              <button type="button" class="btn btn-success" id="AddSpellNine">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </form>
   <script src="../js/script.js"></script>
 </body>
