@@ -1,7 +1,8 @@
 import { Model } from '../core/Model';
+import { CharacterData } from '.';
 
 /**
- * JSDoc Character Type
+ * Character Type JSDoc
  * @typedef Character
  * 
  * @property {number} id
@@ -128,9 +129,13 @@ class CharactersModel extends Model
    * @param {string} player Discord ID of the player to get a character from.
    * @param {string} code Code of the character to find.
    * @param {string} data Name of the data to get.
+   * @returns {Promise}
    */
   async getData(player, code, data)
   {
+    if(!Object.values(CharacterData).includes(data))
+      throw Error('Invalid name of character data given.');
+    
     let queryResult = await this
       ._find(player, code)
       .select(data)
@@ -152,12 +157,13 @@ class CharactersModel extends Model
    * 
    * @param {string} player Discord ID of the player to get a character from.
    * @param {string} code Code of the character to find.
-   * @param {string} property Name of the table to join. 
+   * @param {string} property Name of the table to join.
+   * @returns {Promise}
    */
   joinProperty(player, code, property)
   {
     return this
-      ._find(player, code)
+			._find(player, code)
       .leftJoin(property, 'char_id', '=', 'characters.id');
   }
 }
