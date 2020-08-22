@@ -4,3 +4,6 @@ node_modules
 
 # esfox' other files folder
 others
+
+# Local VSCode settings
+.vscode

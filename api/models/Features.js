@@ -5,13 +5,13 @@ class FeaturesModel extends MultipleProperty
   constructor()
   {
     super(
-			'features',
-			[
-				'name',
-				'description',
-				'feat_id',
-			],
-		);
+      'features',
+      [
+        'name',
+        'description',
+        'feat_id',
+      ],
+    );
   }
 }
 

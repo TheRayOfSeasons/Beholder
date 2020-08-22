@@ -15,14 +15,14 @@ class AttacksModel extends MultipleProperty
   constructor()
   {
     super(
-			'attacks',
-			[
-				'name',
-				'atk_bonus',
-				'damage',
-				'damage_type',
-			],
-		);
+      'attacks',
+      [
+        'name',
+        'atk_bonus',
+        'damage',
+        'damage_type',
+      ],
+    );
   }
 }
 

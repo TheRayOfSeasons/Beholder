@@ -163,7 +163,7 @@ class CharactersModel extends Model
   joinProperty(player, code, property)
   {
     return this
-			._find(player, code)
+      ._find(player, code)
       .leftJoin(property, 'char_id', '=', 'characters.id');
   }
 }

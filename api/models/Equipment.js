@@ -14,13 +14,13 @@ class EquipmentModel extends MultipleProperty
   constructor()
   {
     super(
-			'equipment',
-			[
-				'name',
-				'description',
-				'item_id',
-			],
-		);
+      'equipment',
+      [
+        'name',
+        'description',
+        'item_id',
+      ],
+    );
   }
 }
 

@@ -5,15 +5,15 @@ class SpellsModel extends MultipleProperty
   constructor()
   {
     super(
-			'spells',
-			[
-				'level',
-				'name',
-				'description',
-				'is_cantrip',
-				'spell_id',
-			],
-		);
+      'spells',
+      [
+        'level',
+        'name',
+        'description',
+        'is_cantrip',
+        'spell_id',
+      ],
+    );
   }
 }
 
