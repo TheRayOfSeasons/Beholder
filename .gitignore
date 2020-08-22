@@ -7,3 +7,6 @@ others
 
 # Local VSCode settings
 .vscode
+
+# CSS map files
+*.css.map
