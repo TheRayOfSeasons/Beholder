@@ -1,10 +1,17 @@
-import { CharacterProperty } from './CharacterProperty';
+import { MultipleProperty } from './base/MultipleProperty';
 
-class FeaturesModel extends CharacterProperty
+class FeaturesModel extends MultipleProperty
 {
   constructor()
   {
-    super('features');
+    super(
+      'features',
+      [
+        'name',
+        'description',
+        'feat_id',
+      ],
+    );
   }
 }
 

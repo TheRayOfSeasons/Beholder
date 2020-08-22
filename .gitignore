@@ -2,8 +2,11 @@ node_modules
 .env
 *.sqlite
 
-# Charles' other files folder
+# esfox' other files folder
 others
+
+# Local VSCode settings
+.vscode
 
 # CSS map files
 *.css.map

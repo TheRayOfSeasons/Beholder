@@ -1,10 +1,26 @@
-import { CharacterProperty } from './CharacterProperty';
+import { MultipleProperty } from './base/MultipleProperty';
 
-class EquipmentModel extends CharacterProperty
+/**
+ * Equipment Type JSDoc
+ * @typedef Equpment
+ * 
+ * @property {string} name
+ * @property {string} description
+ * @property {number} item_id
+ */
+
+class EquipmentModel extends MultipleProperty
 {
   constructor()
   {
-    super('equipment');
+    super(
+      'equipment',
+      [
+        'name',
+        'description',
+        'item_id',
+      ],
+    );
   }
 }
 
