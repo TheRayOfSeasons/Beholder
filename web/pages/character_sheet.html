@@ -9,7 +9,7 @@
   <title>Beholder Character Sheet</title>
 </head>
 <body class="container">
-  <form id="form" class="py-4 px-2 px-sm-0">
+  <form id="CharacterSheetForm" class="py-4 px-2 px-sm-0">
 
     <!-- Header forms -->
     <div class="card bg-dark mb-5">
@@ -29,11 +29,11 @@
               <div class="col-md-4">
                 <div class="row">
                   <div class="col-md-6">
-                    <input class="form-control bg-dark text-light" type="text" name="class" id="Class">
+                    <input class="form-control bg-dark text-light" type="text" name="class-1" id="Class-1">
                     <label for="Class">Class</label>
                   </div>
                   <div class="col-md-6">
-                    <input class="form-control bg-dark text-light" type="number" name="level" id="Level">
+                    <input class="form-control bg-dark text-light" type="number" name="level-1" id="Level-1">
                     <label for="level">Level</label>
                   </div>
                 </div>
@@ -82,8 +82,8 @@
                 </div>
                 <div class="card-body">
                   <div class="card-text">
-                    <input class="form-control bg-dark text-light" type="number" name="strenghtModifier" id="StrengthModifier">
-                    <input class="form-control bg-dark text-light" type="number" name="strenghtScore" id="StrengthScore">
+                    <input class="form-control bg-dark text-light" type="number" name="strenght_modifier" id="StrengthModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="strenght_score" id="StrengthScore">
                   </div>
                 </div>
               </div>
@@ -95,8 +95,8 @@
                 </div>
                 <div class="card-body">
                   <div class="card-text">
-                    <input class="form-control bg-dark text-light" type="number" name="dexterityModifier" id="DexterityModifier">
-                    <input class="form-control bg-dark text-light" type="number" name="dexterityScore" id="DexterityScore">
+                    <input class="form-control bg-dark text-light" type="number" name="dexterity_modifier" id="DexterityModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="dexterity_score" id="DexterityScore">
                   </div>
                 </div>
               </div>
@@ -108,8 +108,8 @@
                 </div>
                 <div class="card-body">
                   <div class="card-text">
-                    <input class="form-control bg-dark text-light" type="number" name="constitutionModifier" id="ConstitutionModifier">
-                    <input class="form-control bg-dark text-light" type="number" name="constitutionScore" id="ConstitutionScore">
+                    <input class="form-control bg-dark text-light" type="number" name="constitution_Modifier" id="ConstitutionModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="constitution_Score" id="ConstitutionScore">
                   </div>
                 </div>
               </div>
@@ -119,8 +119,8 @@
                 <div class="card-body">
                   <div class="card-title text-center"><h6>Intelligence</h6></div>
                   <div class="card-text">
-                    <input class="form-control bg-dark text-light" type="number" name="intelligenceModifier" id="IntelligenceModifier">
-                    <input class="form-control bg-dark text-light" type="number" name="intelligenceScore" id="IntelligenceScore">
+                    <input class="form-control bg-dark text-light" type="number" name="intelligence_modifier" id="IntelligenceModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="intelligence_score" id="IntelligenceScore">
                   </div>
                 </div>
               </div>
@@ -132,8 +132,8 @@
                 </div>
                 <div class="card-body">
                   <div class="card-text">
-                    <input class="form-control bg-dark text-light" type="number" name="wisdomModifier" id="WisdomModifier">
-                    <input class="form-control bg-dark text-light" type="number" name="wisdomScore" id="WisdomScore">
+                    <input class="form-control bg-dark text-light" type="number" name="wisdom_modifier" id="WisdomModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="wisdom_score" id="WisdomScore">
                   </div>
                 </div>
               </div>
@@ -145,8 +145,8 @@
                 </div>
                 <div class="card-body">
                   <div class="card-text">
-                    <input class="form-control bg-dark text-light" type="number" name="charismaModifier" id="CharismaModifier">
-                    <input class="form-control bg-dark text-light" type="number" name="charismaScore" id="CharismaScore">
+                    <input class="form-control bg-dark text-light" type="number" name="charisma_modifier" id="CharismaModifier">
+                    <input class="form-control bg-dark text-light" type="number" name="charisma_score" id="CharismaScore">
                   </div>
                 </div>
               </div>
@@ -285,17 +285,17 @@
                   </div>
                   <div class="d-flex">
                     <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
-                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="Sleight of Hand" id="Sleight of Hand">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="sleight_of_hand" id="Sleight of Hand">
                     <small class="col-md-7"><label for="Sleight of Hand">Sleight of Hand (Dex)</label></small>
                   </div>
                   <div class="d-flex">
                     <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
-                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="Stealth" id="Stealth">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="stealth" id="Stealth">
                     <small class="col-md-7"><label for="Stealth">Stealth (Dex)</label></small>
                   </div>
                   <div class="d-flex">
                     <input class="col-md-1 form-check bg-dark text-light" type="checkbox">
-                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="Survival" id="Survival">
+                    <input class="col-md-4 form-control bg-dark text-light" size="3" type="number" name="survival" id="Survival">
                     <small class="col-md-7"><label for="Survival">Survival (Wis)</label></small>
                   </div>
                 </div>
@@ -317,7 +317,7 @@
             <div class="card-header"><h5>Other Proficiencies</label></div>
             <div class="card-body">
               <div id="OtherProficiencies">
-                <input class="col-md-12 form-control bg-dark text-light" type="text" name="other_proficiency_1" id="OtherProficiency1">
+                <input class="col-md-12 form-control bg-dark text-light" type="text" name="other_proficiency-1" id="OtherProficiency-1">
               </div>
               <div class="d-flex flex-row justify-content-around mt-3" id="OtherProficiencyButtons">
                 <button type="button" class="btn btn-success" id="AddOtherProficiency">+</button>
@@ -331,7 +331,7 @@
             <div class="card-header"><h5>Languages</label></div>
             <div class="card-body">
               <div id="OtherProficiencies">
-                <input class="col-md-12 form-control bg-dark text-light" type="text" name="language_1" id="Language1">
+                <input class="col-md-12 form-control bg-dark text-light" type="text" name="language-1" id="Language-1">
               </div>
               <div class="d-flex flex-row justify-content-around mt-3" id="OtherProficiencyButtons">
                 <button type="button" class="btn btn-success" id="AddLanguage">+</button>
@@ -420,17 +420,17 @@
                   <div class="col-md-6">
                     Success
                   </div>
-                  <input class="col-md-2" type="checkbox" name="death_save_success_1" id="DeathSaveSuccess1">
-                  <input class="col-md-2" type="checkbox" name="death_save_success_2" id="DeathSaveSuccess2">
-                  <input class="col-md-2" type="checkbox" name="death_save_success_3" id="DeathSaveSuccess3">
+                  <input class="col-md-2" type="checkbox" name="death_save_success-1" id="DeathSaveSuccess-1">
+                  <input class="col-md-2" type="checkbox" name="death_save_success-2" id="DeathSaveSuccess-2">
+                  <input class="col-md-2" type="checkbox" name="death_save_success-3" id="DeathSaveSuccess-3">
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     Failure
                   </div>
-                  <input class="col-md-2" type="checkbox" name="death_save_fail_1" id="DeathSaveFail1">
-                  <input class="col-md-2" type="checkbox" name="death_save_fail_2" id="DeathSaveFail2">
-                  <input class="col-md-2" type="checkbox" name="death_save_fail_3" id="DeathSaveFail3">
+                  <input class="col-md-2" type="checkbox" name="death_save_fail-1" id="DeathSaveFail-1">
+                  <input class="col-md-2" type="checkbox" name="death_save_fail-2" id="DeathSaveFail-2">
+                  <input class="col-md-2" type="checkbox" name="death_save_fail-3" id="DeathSaveFail-3">
                 </div>
               </div>
               <div class="card-footer"><h6>Death Saves</h6></div>
@@ -449,16 +449,16 @@
               </tr>
               <tr>
                 <td>
-                  <input class="form-control bg-dark text-light" type="text" name="atk_name_1" id="AttackName1">
+                  <input class="form-control bg-dark text-light" type="text" name="atk_name-1" id="AttackName-1">
                 </td>
                 <td>
-                  <input class="form-control bg-dark text-light" type="text" name="atk_bonus_1" id="AttackBonus1">
+                  <input class="form-control bg-dark text-light" type="text" name="atk_bonus-1" id="AttackBonus-1">
                 </td>
                 <td>
-                  <input class="form-control bg-dark text-light" type="text" name="atk_damage_1" id="AttackDamage1">
+                  <input class="form-control bg-dark text-light" type="text" name="atk_damage-1" id="AttackDamage-1">
                 </td>
                 <td>
-                  <button type="button" class="btn btn-danger" id="removeAtk">-</button>
+                  <button type="button" class="btn btn-danger" id="RemoveAtk-1">-</button>
                 </td>
               </tr>
             </table>
@@ -510,11 +510,14 @@
             <div id="Equipment1">
               <div class="d-flex">
                 <label class="col-md-3" for="ItemName1">Name</label>
-                <input class="col-md-9 form-control bg-dark text-light" type="text" name="item_name_1" id="ItemName1">
+                <input class="col-md-9 form-control bg-dark text-light" type="text" name="item_name-1" id="ItemName1">
               </div>
               <label for="ItemDescription1">Description</label>
-              <textarea class="form-control bg-dark text-light" type="text" name="item_description_1" id="ItemDescription1" col="30" row="10"></textarea>
+              <textarea class="form-control bg-dark text-light" type="text" name="item_description-1" id="ItemDescription-1" col="30" row="10"></textarea>
               <hr>
+            </div>
+            <div class="d-flex flex-row-reverse">
+              <button type="button" class="btn btn-danger" id="RemoveItem-1">-</button>
             </div>
           </div>
 
@@ -577,12 +580,15 @@
 
             <div id="Feature1">
               <div class="d-flex">
-                <label class="col-md-3" for="FeatureName1">Name</label>
-                <input class="col-md-9 form-control bg-dark text-light" type="text" name="feature_name_1" id="FeatureName1">
+                <label class="col-md-3" for="FeatureName-1">Name</label>
+                <input class="col-md-9 form-control bg-dark text-light" type="text" name="feature_name-1" id="FeatureName-1">
               </div>
-              <label for="ItemName1">Description</label>
-              <textarea class="form-control bg-dark text-light" type="text" name="feature_description_1" id="FeatureDescription1" col="30" row="10"></textarea>
+              <label for="ItemName-1">Description</label>
+              <textarea class="form-control bg-dark text-light" type="text" name="feature_description-1" id="FeatureDescription-1" col="30" row="10"></textarea>
               <hr>
+            </div>
+            <div class="d-flex flex-row-reverse">
+              <button type="button" class="btn btn-danger" id="RemoveFeature-1">-</button>
             </div>
           </div>
 
@@ -714,7 +720,7 @@
           <div class="card-body">
             <div id="Cantrips">
               <div class="d-flex flex-row">
-                <input class="form-control bg-dark text-light" type="text" name="cantrip_1" id="Cantrip-1">
+                <input class="form-control bg-dark text-light" type="text" name="cantrip-1" id="Cantrip-1">
                 <button type="button" class="btn btn-danger ml-1" id="RemoveCantrip-1">-</button>
               </div>
             </div>
@@ -742,7 +748,7 @@
           <div class="card-body">
             <div id="SpellOne">
               <div class="d-flex flex-row">
-                <input class="form-control bg-dark text-light" type="text" name="spell_one_1" id="Spell-One-1">
+                <input class="form-control bg-dark text-light" type="text" name="spell_one-1" id="Spell-One-1">
                 <button type="button" class="btn btn-danger ml-1" id="RemoveSpellOne-1">-</button>
               </div>
             </div>
@@ -986,7 +992,7 @@
     </div>
 
     <div class="d-flex flex-row-reverse my-5">
-      <input class="btn btn-lg btn-success text-center" type="submit" value="Submit">
+      <button class="btn btn-lg btn-success text-center" type="button" id="CharacterSheetSubmit">Submit</button>
     </div>
   </form>
   <script src="../js/script.js"></script>
